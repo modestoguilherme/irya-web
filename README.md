@@ -78,6 +78,11 @@ npm run lint
 
 ## Deployment Notes
 
+Version 0.1.1 formats Portal dates in `America/Sao_Paulo`, independently of the
+device timezone. Calendar values (`YYYY-MM-DD`) preserve their day; missing or
+invalid values display `-`. This changes presentation, without rewriting saved dates.
+Validation: `npm test` (6 tests), `npm run lint`, `npm run build`.
+
 - For Vercel, keep SPA rewrite in `vercel.json`:
   - `/(.*) -> /`
 - Set `VITE_API_URL` in your hosting environment (do not rely only on local `.env.production`).

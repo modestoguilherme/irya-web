@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import api from "../../api";
+import { formatPortalDate } from "../../utils/dates";
 import {
   FiArrowLeft,
   FiFilter,
@@ -85,7 +86,7 @@ type SortMode = "cadastro_desc" | "cadastro_asc" | "nome_asc" | "nome_desc";
 
 const formatDate = (value: string | null) => {
   if (!value) return "-";
-  return new Date(value).toLocaleDateString("pt-BR", {
+  return formatPortalDate(value, {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
@@ -94,7 +95,7 @@ const formatDate = (value: string | null) => {
 
 const formatDateTime = (value: string | null) => {
   if (!value) return "-";
-  return new Date(value).toLocaleString("pt-BR", {
+  return formatPortalDate(value, {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
@@ -233,7 +234,7 @@ const Admin = () => {
       .map((peso) => ({
         id: peso.id,
         pesoKg: peso.pesoKg,
-        data: new Date(peso.dataRegistro).toLocaleDateString("pt-BR", {
+        data: formatPortalDate(peso.dataRegistro, {
           day: "2-digit",
           month: "2-digit",
         }),

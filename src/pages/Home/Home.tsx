@@ -1,5 +1,6 @@
 import Container from "../../components/Container/Container";
 import Button from "../../components/Button/Button";
+import { formatPortalDate } from "../../utils/dates";
 import ChatOffer from "../../components/ChatOffer/ChatOffer";
 import { useNavigate } from "react-router-dom";
 import { useQuestionarioStatus } from "../../hooks/useQuestionarioStatus";
@@ -11,8 +12,7 @@ import iryaSaudando from "../../../assets/irya-saudando.png";
 import iryaGratidao from "../../../assets/irya-grata.png";
 
 const formatDate = (dateString: string): string => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("pt-BR", {
+  return formatPortalDate(dateString, {
     day: "2-digit",
     month: "long",
     year: "numeric",

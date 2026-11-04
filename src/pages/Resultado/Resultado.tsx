@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { formatPortalDate } from "../../utils/dates";
 import { useNavigate } from "react-router-dom";
 import {
   PolarAngleAxis,
@@ -223,8 +224,7 @@ const Resultado: React.FC = () => {
   const percentualGlobalResumo = Math.round(percentualGlobal);
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("pt-BR", {
+    return formatPortalDate(dateString, {
       year: "numeric",
       month: "long",
       day: "numeric",

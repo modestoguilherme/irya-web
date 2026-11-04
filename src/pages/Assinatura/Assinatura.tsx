@@ -4,6 +4,7 @@ import Button from "../../components/Button/Button";
 import BackButton from "../../components/BackButton/BackButton";
 import Container from "../../components/Container/Container";
 import api from "../../api";
+import { formatPortalDate } from "../../utils/dates";
 import { getPacientePrimeiroNome, setPaciente, getPaciente } from "../../utils/session";
 import PremiumBadge from "../../components/PremiumBadge/PremiumBadge";
 
@@ -35,7 +36,7 @@ type CancelResponse = {
 
 const formatDate = (value: string | null) => {
   if (!value) return "-";
-  return new Date(value).toLocaleDateString("pt-BR", {
+  return formatPortalDate(value, {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
